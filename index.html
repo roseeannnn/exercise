@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html, body {
+  height: 100%;
+  font-family: "Arial", sans-serif;
+}
+
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+
+.header {
+  background-color: #b16366;
+  color: #ffffff;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header img {
+  height: 80px;
+}
+
+
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+[class*="col-"] {
+  float: left;
+  padding: 15px;
+  width: 100%;
+}
+@media only screen and (min-width: 768px) {
+  .col-3 { width: 25%; }
+  .col-6 { width: 50%; }
+}
+
+
+.menu ul {
+  list-style-type: none;
+}
+.menu li {
+  padding: 10px;
+  margin-bottom: 7px;
+  background-color: #c98888;
+  color: #ffffff;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: 0.3s;
+}
+.menu li:hover {
+  background-color: #a86464;
+}
+.menu li.active {
+  background-color: #a86464;
+  font-weight: bold;
+}
+
+
+#content {
+  flex: 1;
+}
+
+
+.footer {
+  background-color: #c98888;
+  color: #ffffff;
+  text-align: center;
+  font-size: 12px;
+  padding: 15px;
+  margin-top: auto; 
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Ilocos Sur Polytechnic State College</h1>
+  <img src="images/logo.png" alt="ISPSC Logo">
+</div>
+
+<div class="row">
+  <div class="col-3 menu">
+    <ul>
+      <li onclick="showContent('history', this)" class="active">History</li>
+      <li onclick="showContent('vision', this)">Vision</li>
+      <li onclick="showContent('mission', this)">Mission</li>
+      <li onclick="showContent('values', this)">Core Values</li>
+      <li onclick="showContent('goals', this)">Goals & Objectives</li>
+    </ul>
+  </div>
+
+  <div class="col-6" id="content">
+    <h1>History</h1>
+    <p>
+      ISPSC is a comprehensive six-campus institution of higher learning mandated to give professional and technical training both in the undergraduate and graduate levels in the fields of economics, agriculture, fishery, trade, home industry, engineering, education, forest research and conservation, management, finance, accounting and business administration, public administration and other fields as may be relevant, besides providing for the promotion of scientific and technological researches which the College deems necessary in carrying out its objectives. The main campus is situated in Santa Maria, Ilocos Sur and the five other campuses are strategically located in Candon City and the municipalities of Narvacan, Santiago, Tagudin, Cervantes, all in the second district of Ilocos Sur.
+    </p>
+  </div>
+</div>
+
+<div class="footer">
+  <p>ISPSC- STA. MARIA 2025.</p>
+</div>
+
+<script>
+function showContent(section, element) {
+  let items = document.querySelectorAll(".menu li");
+  items.forEach(li => li.classList.remove("active"));
+  element.classList.add("active");
+
+  let content = document.getElementById("content");
+
+  if (section === "history") {
+    content.innerHTML = `
+      <h1>History</h1>
+      <p>ISPSC is a comprehensive six-campus institution of higher learning mandated to give professional and technical training both in the undergraduate and graduate levels in the fields of economics, agriculture, fishery, trade, home industry, engineering, education, forest research and conservation, management, finance, accounting and business administration, public administration and other fields as may be relevant, besides providing for the promotion of scientific and technological researches which the College deems necessary in carrying out its objectives. The main campus is situated in Santa Maria, Ilocos Sur and the five other campuses are strategically located in Candon City and the municipalities of Narvacan, Santiago, Tagudin, Cervantes, all in the second district of Ilocos Sur.</p>
+    `;
+  } else if (section === "vision") {
+    content.innerHTML = `
+      <h1>Vision</h1>
+      <p>A vibrant and nurturing Polytechnic Service College for transforming lives and communities.</p>
+    `;
+  } else if (section === "mission") {
+    content.innerHTML = `
+      <h1>Mission</h1>
+      <p>To improve the lives of people and communities through quality instruction, innovations, productivity initiatives, environment and industry-feasible technologies, resource mobilization, and transformative outreach programs and services.</p>
+    `;
+  } else if (section === "values") {
+    content.innerHTML = `
+      <h1>Core Values</h1>
+      <ul>
+        <li>Integrity</li>
+        <li>Service</li>
+        <li>Professionalism</li>
+        <li>Social Responsibility</li>
+        <li>Commitment to Excellence</li>
+      </ul>
+    `;
+  } else if (section === "goals") {
+    content.innerHTML = `
+      <h1>Goals & Objectives</h1>
+      <ul>
+        <li>To be the source of competent and employable technical and professional graduates for domestic and foreign markets through quality instruction;</li>
+        <li>To disseminate products of researches (matured and environment-friendly technologies) to entrepreneurs, farmers and fisher folks to improve/increase their income;</li>
+        <li>To help alleviate poverty and improve the quality of the lives of poor and marginalized families in the service areas through relevant extension services;</li>
+        <li>To strengthen production and generate more income to support research, instruction & extension activities;</li>
+        <li>To improve physical facilities and building structures in all of the campuses.</li>
+      </ul>
+    `;
+  }
+}
+</script>
+
+</body>
+</html>
